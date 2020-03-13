@@ -1,13 +1,18 @@
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
+let snakeHead_X = 50;
+
 
 function init() {
     //canvas credentials
-    view.drawCanvas();
+    view.drawGameBoard();
+    setInterval(drawSnakeHead,100);
 }
+// draw snake Head
 
 const view = {
-  drawCanvas: () => {
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
+
+  drawGameBoard: () => {
 
     for (let i = 0; i < canvas.width; i++) {
       for (let j = 0; j < canvas.width; j++) {
@@ -24,8 +29,18 @@ const view = {
     }
   }
 };
-
 init();
+
+// Snake Head
+function drawSnakeHead() {
+  snakeHead_X = snakeHead_X + 5;
+  console.log(snakeHead_X);
+  context.fillStyle = "white";
+  context.fillRect(snakeHead_X,200,25,25)
+}
+
+
+
 
 
 
